@@ -19,8 +19,8 @@ const { title, description, image, tags, link, isMoreCard = false } = Astro.prop
     <article class="more-card">
       <div class="more-content">
         <span class="plus">+</span>
-        <h3>Más Proyectos</h3>
-        <p>Descubre otros proyectos en mi GitHub</p>
+        <h3 class="more-title">Más Proyectos</h3>
+        <p class="more-description">Descubre otros proyectos en mi GitHub</p>
         <a href="https://github.com/tuuser" class="more-link">Ver más →</a>
       </div>
     </article>
@@ -244,6 +244,25 @@ const { title, description, image, tags, link, isMoreCard = false } = Astro.prop
   .more-card:hover .plus {
     color: var(--accets);
     transform: rotate(180deg);
+  }
+
+  .more-title {
+    font-family: var(--font-title);
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin: 0 0 0.8rem 0;
+    opacity: 1;
+    transform: none;
+  }
+
+  .more-description {
+    font-family: var(--font-body);
+    color: var(--accets);
+    font-size: 0.9rem;
+    margin: 0 0 1.2rem 0;
+    line-height: 1.6;
+    opacity: 1;
+    transform: none;
   }
 
   .more-link {
