@@ -29,29 +29,65 @@ import '../styles/main.css';
 </html>
 <style is:global>
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+		--font-title: 'Montserrat', sans-serif;
+		--font-body: 'Merriweather', serif;
+		--primary: #D32F2F;
+		--secondary: #F5F5F5;
+		--background: #333333;
+		--accets: #FFFFFF;
+		--carbon: #232323;
+		--scroll-behavior: smooth;
+		--scroll-timeline: scroll();
 	}
+	
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
+		font-family: var(--font-body);
+		background: var(--background);
+		scroll-behavior: smooth;
 	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+
+	body {
+		overflow-y: scroll;
+		scroll-timeline: --scroll-timeline block;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+
+		.scroll-animation {
+			transition: none !important;
+		}
 	}
 </style>
+
+<script>
+	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+		anchor.addEventListener('click', (e: Event) => {
+			e.preventDefault();
+			const href = anchor.getAttribute('href');
+			if (href) {
+				const target = document.querySelector(href);
+				if (target) {
+					target.scrollIntoView({
+						behavior: 'smooth',
+						block: 'start'
+					});
+				}
+			}
+		});
+	});
+</script>

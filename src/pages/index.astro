@@ -3,16 +3,20 @@ import Layout from '../layouts/Layout.astro';
 import Home from '../components/Home.astro';
 import Trabajos from '../components/Works.astro';
 import SobreMi from '../components/SobreMi.astro';
+import Blog from '../components/Blog.astro';
 import Contacto from '../components/Contacto.astro';
 ---
 
 <Layout title="Portafolio">
 	<Home />
-	<sectionContainer id="SobreMi">
+	<sectionContainer id="sobre-mi">
 		<SobreMi />
 	</sectionContainer>	
-	<sectionContainer id="Trabajos">
+	<sectionContainer id="works">
 		<Trabajos />
+	</sectionContainer>
+	<sectionContainer id="blog">
+		<Blog />
 	</sectionContainer>
 	<sectionContainer id="contacto">
 		<Contacto />
