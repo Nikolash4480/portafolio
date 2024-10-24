@@ -1,0 +1,263 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  tags: Array<{
+    name: string;
+    icon: string;
+  }>;
+  link?: string;
+  isMoreCard?: boolean;
+}
+
+const { title, description, image, tags, link, isMoreCard = false } = Astro.props;
+---
+
+{
+  isMoreCard ? (
+    <article class="more-card">
+      <div class="more-content">
+        <span class="plus">+</span>
+        <h3>Más Proyectos</h3>
+        <p>Descubre otros proyectos en mi GitHub</p>
+        <a href="https://github.com/tuuser" class="more-link">Ver más →</a>
+      </div>
+    </article>
+  ) : (
+    <article class="project-card">
+      <div class="card-image">
+        <img src={image} alt={title} loading="lazy" />
+      </div>
+      <div class="card-overlay">
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <div class="tags">
+          {tags.map((tag) => (
+            <div class="tag-container">
+              <img src={tag.icon} alt={tag.name} class="tag-icon" />
+              <span class="tag">{tag.name}</span>
+            </div>
+          ))}
+        </div>
+        {link && <a href={link} class="project-link">Ver proyecto →</a>}
+      </div>
+    </article>
+  )
+}
+
+<style>
+  .project-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--carbon);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    aspect-ratio: 4/3;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+
+  .project-card:hover .card-image img {
+    transform: scale(1.05);
+  }
+
+  .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, 
+      rgba(35, 35, 35, 0.95) 0%,
+      rgba(35, 35, 35, 0.85) 50%,
+      rgba(35, 35, 35, 0.6) 100%);
+    padding: 2rem;
+    transform: translateY(100%);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .project-card:hover .card-overlay {
+    transform: translateY(0);
+  }
+
+  h3 {
+    font-family: var(--font-title);
+    color: var(--accets);
+    font-size: 1.5rem;
+    margin: 0 0 0.8rem 0;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0.1s;
+  }
+
+  .project-card:hover h3 {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  p {
+    font-family: var(--font-body);
+    color: var(--secondary);
+    font-size: 0.9rem;
+    margin: 0 0 1.2rem 0;
+    line-height: 1.6;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0.2s;
+  }
+
+  .project-card:hover p {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0.3s;
+  }
+
+  .project-card:hover .tags {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .tag-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+    background-color: rgba(23, 23, 23, 0.9);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+  }
+
+  .tag-container:hover {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+
+  .tag-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+  }
+
+  .tag {
+    color: var(--accets);
+    font-size: 0.8rem;
+    font-family: var(--font-title);
+    letter-spacing: 0.5px;
+  }
+
+  .project-link {
+    color: var(--accets);
+    text-decoration: none;
+    font-family: var(--font-title);
+    font-size: 0.9rem;
+    transition: all 0.4s ease;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0.4s;
+  }
+
+  .project-card:hover .project-link {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .project-link:hover {
+    color: var(--primary);
+    padding-left: 8px;
+  }
+
+  /* More Card Styles */
+  .more-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--carbon);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    aspect-ratio: 4/3;
+    border: 2px dashed var(--primary);
+  }
+
+  .more-card:hover {
+    transform: translateY(-8px);
+    background-color: var(--background);
+    border-color: var(--accets);
+  }
+
+  .more-content {
+    text-align: center;
+    padding: 2rem;
+    transition: all 0.8s ease;
+  }
+
+  .more-card:hover .more-content {
+    transform: scale(1.05);
+  }
+
+  .plus {
+    font-size: 4rem;
+    color: var(--primary);
+    font-family: var(--font-title);
+    display: block;
+    margin-bottom: 1rem;
+    transition: all 0.8s ease;
+  }
+
+  .more-card:hover .plus {
+    color: var(--accets);
+    transform: rotate(180deg);
+  }
+
+  .more-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-family: var(--font-title);
+    font-size: 1rem;
+    transition: all 0.8s ease;
+    margin-top: 1rem;
+    display: inline-block;
+  }
+
+  .more-link:hover {
+    color: var(--accets);
+    transform: translateX(8px);
+  }
+</style>

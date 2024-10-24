@@ -1,0 +1,160 @@
+---
+import ProjectCard from '../components/cards/ProjectCard.astro';
+
+const projects = [
+  {
+    title: "E-commerce Artesanías",
+    description: "Tienda online para artesanos locales con catálogo de productos, carrito de compras y pasarela de pagos.",
+    image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=2370&auto=format&fit=crop",
+    tags: [
+      { name: "Vue.js", icon: "https://api.iconify.design/logos:vue.svg" },
+      { name: "Vuetify", icon: "https://api.iconify.design/logos:vuetifyjs.svg" },
+      { name: "JavaScript", icon: "https://api.iconify.design/logos:javascript.svg" }
+    ],
+    link: "https://github.com/topics/ecommerce"
+  },
+  {
+    title: "Tattoo Studio Manager",
+    description: "Sistema de gestión de turnos para estudio de tatuajes con galería de trabajos y calendario interactivo.",
+    image: "https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?q=80&w=2371&auto=format&fit=crop",
+    tags: [
+      { name: "TypeScript", icon: "https://api.iconify.design/logos:typescript-icon.svg" },
+      { name: "Vue.js", icon: "https://api.iconify.design/logos:vue.svg" },
+      { name: "Netlify", icon: "https://api.iconify.design/logos:netlify.svg" }
+    ],
+    link: "https://github.com/topics/appointment-scheduling"
+  },
+  {
+    title: "Tech Company Landing",
+    description: "Rediseño y desarrollo de landing page corporativa con animaciones y formulario de contacto.",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2370&auto=format&fit=crop",
+    tags: [
+      { name: "HTML", icon: "https://api.iconify.design/logos:html-5.svg" },
+      { name: "CSS", icon: "https://api.iconify.design/logos:css-3.svg" },
+      { name: "JavaScript", icon: "https://api.iconify.design/logos:javascript.svg" }
+    ],
+    link: "https://github.com/topics/landing-page"
+  },
+  {
+    title: "Blog Personal",
+    description: "Blog minimalista con sistema de categorías, búsqueda y comentarios integrados.",
+    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2370&auto=format&fit=crop",
+    tags: [
+      { name: "Astro", icon: "https://api.iconify.design/logos:astro.svg" },
+      { name: "TypeScript", icon: "https://api.iconify.design/logos:typescript-icon.svg" },
+      { name: "Netlify", icon: "https://api.iconify.design/logos:netlify.svg" }
+    ],
+    link: "https://github.com/topics/blog-template"
+  },
+  {
+    title: "Portfolio Fotógrafo",
+    description: "Portafolio interactivo para fotógrafo profesional con galería masónica y reserva de sesiones.",
+    image: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=2374&auto=format&fit=crop",
+    tags: [
+      { name: "Vue.js", icon: "https://api.iconify.design/logos:vue.svg" },
+      { name: "CSS", icon: "https://api.iconify.design/logos:css-3.svg" },
+      { name: "JavaScript", icon: "https://api.iconify.design/logos:javascript.svg" }
+    ],
+    link: "https://github.com/topics/portfolio"
+  },
+  {
+    title: "Restaurant Menu App",
+    description: "Menú digital interactivo con QR para restaurante, incluye sistema de pedidos online.",
+    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2370&auto=format&fit=crop",
+    tags: [
+      { name: "Vue.js", icon: "https://api.iconify.design/logos:vue.svg" },
+      { name: "Vuetify", icon: "https://api.iconify.design/logos:vuetifyjs.svg" },
+      { name: "Netlify", icon: "https://api.iconify.design/logos:netlify.svg" }
+    ],
+    link: "https://github.com/topics/restaurant-menu"
+  },
+  {
+    title: "Inmobiliaria Virtual",
+    description: "Plataforma de búsqueda de propiedades con filtros avanzados y tours virtuales 360°.",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2373&auto=format&fit=crop",
+    tags: [
+      { name: "TypeScript", icon: "https://api.iconify.design/logos:typescript-icon.svg" },
+      { name: "Vue.js", icon: "https://api.iconify.design/logos:vue.svg" },
+      { name: "Vuetify", icon: "https://api.iconify.design/logos:vuetifyjs.svg" }
+    ],
+    link: "https://github.com/topics/real-estate"
+  },
+  {
+    title: "Agenda de Eventos",
+    description: "Aplicación para gestión y venta de entradas a eventos culturales y conciertos.",
+    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2370&auto=format&fit=crop",
+    tags: [
+      { name: "Astro", icon: "https://api.iconify.design/logos:astro.svg" },
+      { name: "TypeScript", icon: "https://api.iconify.design/logos:typescript-icon.svg" },
+      { name: "Netlify", icon: "https://api.iconify.design/logos:netlify.svg" }
+    ],
+    link: "https://github.com/topics/event-management"
+  }
+];
+---
+
+<section class="projects-section">
+  <h2>Mis Proyectos</h2>
+  <div class="projects-grid">
+    {
+      projects.map((project) => (
+        <ProjectCard {...project} />
+      ))
+    }
+    <ProjectCard
+      isMoreCard={true}
+      title=""
+      description=""
+      image=""
+      tags={[]}
+    />
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    padding: 4rem 1rem;
+    background-color: var(--background);
+  }
+
+  h2 {
+    font-family: var(--font-title);
+    color: var(--accets);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+
+  h2::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary);
+    border-radius: 2px;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 1200px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

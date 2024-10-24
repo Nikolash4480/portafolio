@@ -1,0 +1,144 @@
+---
+---
+
+<section class="about-section">
+  <div class="container">
+    <div class="title-container">
+      <h2 class="title">Sobre Mí</h2>
+      <div class="red-bar"></div>
+    </div>
+    
+    <div class="content">
+      <h3 class="sub-title">MI NOMBRE ES <span>NIKOLAS BARROSO</span>,<br> <span>FRONTEND DEVELOPER</span>.</h3>
+      <p>
+         Apasionado por crear experiencias web únicas y significativas. Mi objetivo es construir soluciones digitales que impacten positivamente en la sociedad, combinando diseño intuitivo con código limpio.
+      </p>
+
+      <p>
+        Como miembro de <span class="foxlab">FOXLAB</span>, un equipo colaborativo de desarrolladores, contribuyo activamente en proyectos web aportando código, ideas y visión para el crecimiento del equipo.
+      </p>
+
+      <p>
+        Me distingo por mi versatilidad y enfoque creativo, demostrado en proyectos como el rediseño proactivo de landing pages empresariales. Aunque soy relativamente nuevo en el desarrollo, mi compromiso con el aprendizaje continuo y mi interés por las nuevas tecnologías me impulsan a crecer constantemente como profesional.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    padding: 4rem 1rem;
+    background-color: var(--background);
+    position: relative;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .title-container {
+    position: relative;
+    margin-bottom: 3rem;
+  }
+
+  .title {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--accets);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+  }
+
+  .red-bar {
+    position: absolute;
+    height: 10px;
+    width: 22%; 
+    background-color: var(--primary);
+    bottom: 30%; 
+    left: 1;
+    z-index: 1;
+  }
+
+  .sub-title {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    color: var(--accets);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+  }
+  span {
+    color: var(--primary);
+  }
+  
+  .foxlab {
+    color: rgb(250, 127, 42);
+    font-weight: bold;
+  }
+
+  .content {
+    font-family: var(--font-body);
+    color: var(--accets);
+    line-height: 1.8;
+    padding: 2rem;
+    font-size: 1.1rem;
+    position: relative;
+  }
+
+  .content::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border-left: 3px solid var(--primary);
+    border-bottom: 3px solid var(--primary);
+  }
+
+  .content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border-right: 3px solid var(--primary);
+    border-top: 3px solid var(--primary);
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .about-section {
+      padding: 2rem 1rem;
+    }
+
+    .title {
+      font-size: 2rem;
+    }
+
+    .red-bar {
+      width: 110%;
+      height: 6px;
+    }
+
+    .content {
+      padding: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .content::after {
+      width: 20px;
+      height: 20px;
+    }
+  }
+</style>
