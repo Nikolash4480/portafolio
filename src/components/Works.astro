@@ -94,20 +94,26 @@ const projects = [
 ---
 
 <section class="projects-section" >
-  <h1 class="title">Mis Proyectos</h1>
-  <div class="projects-grid">
-    {
-      projects.map((project) => (
-        <ProjectCard {...project} />
-      ))
-    }
-    <ProjectCard
-      isMoreCard={true}
-      title=""
-      description=""
-      image=""
-      tags={[]}
-    />
+  <div class="container">
+    <div class="title-container">
+      <h2 class="title">Mis Proyectos</h2>
+      <div class="red-bar"></div>
+    </div>
+    
+    <div class="projects-grid">
+      {
+        projects.map((project) => (
+          <ProjectCard {...project} />
+        ))
+      }
+      <ProjectCard
+        isMoreCard={true}
+        title=""
+        description=""
+        image=""
+        tags={[]}
+      />
+    </div>
   </div>
 </section>
 
@@ -115,29 +121,40 @@ const projects = [
   .projects-section {
     padding: 4rem 1rem;
     background-color: var(--carbon);
+    position: relative;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .title-container {
+    position: relative;
+    margin-bottom: 3rem;
   }
 
   .title {
     font-family: var(--font-title);
     font-size: 2.5rem;
-    font-weight: 700;
     color: var(--accets);
-    letter-spacing: 0.1em;
-    margin: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
     position: relative;
+    z-index: 2;
+    display: inline-block;
   }
 
-  .title::after {
-    content: '';
+  .red-bar {
     position: absolute;
-    bottom: -0.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
+    height: 12px;
+    width: 26%; 
     background-color: var(--primary);
-    border-radius: 2px;
+    bottom: 40%; 
+    left: 1;
+    z-index: 1;
   }
+
   
   .projects-grid {
     display: grid;
