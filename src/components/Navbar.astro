@@ -15,9 +15,8 @@ const navItems = [
       <div class="flex-shrink-0">
         <a href="/" class="text-white text-xl font-semibold">Nikolas Barroso</a>
       </div>
-      
-      <!-- Menú hamburguesa para móvil -->
-      <button id="mobile-menu-button" class="sm:hidden text-gray-300 hover:text-white">
+
+      <button id="mobile-menu-button" class="sm:hidden text-gray-300 hover:text-white focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
@@ -41,19 +40,14 @@ const navItems = [
     </div>
 
     <!-- Menú móvil -->
-    <div id="mobile-menu" class="sm:hidden hidden">
-      <div class="px-2 pt-2 pb-3 space-y-1">
-        {navItems.map((item) => (
-          <a
-            href={item.href}
-            class={`block text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300 py-2 nav-link ${
-              currentPath === item.href ? 'active' : ''
-            }`}
-          >
-            {item.text}
-          </a>
-        ))}
-      </div>
+    <div id="mobile-menu" class="sm:hidden hidden mt-4 flex flex-col space-y-4">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="bg-transparent text-white border border-primary text-center py-4 rounded-md transition-all duration-300 hover:bg-red-700 hover:text-white hover:border-transparent">
+          {item.text}
+        </a>
+      ))}
     </div>
   </div>
 </nav>
@@ -88,6 +82,24 @@ const navItems = [
   
   .nav-link.active {
     color: #fff;
+  }
+
+  #mobile-menu a {
+    background-color: rgba(35, 35, 35, 0.7); /* Fondo oscuro semi-transparente */
+    border: 1px solid var(--primary); /* Borde color primario */
+    color: white; /* Texto blanco */
+    transition: all 0.3s ease;
+  }
+  
+  #mobile-menu a:hover {
+    background-color: rgba(255, 0, 0, 0.8); /* Fondo rojo con intensidad baja */
+    color: white;
+    border: 1px solid transparent; /* El borde desaparece al hacer hover */
+  }
+
+  #mobile-menu a:active {
+    background-color: rgba(200, 0, 0, 0.9); /* Rojo más oscuro cuando se presiona */
+    color: white;
   }
 
   @media (max-width: 640px) {
